@@ -3,4 +3,4 @@ ami             = "ami-09b20b3f3f58bd56f" ###I used marketplace to choose one of
 instance_type   = "t2.micro"
 db_instance_class = "db.t2.micro"
 db_name         = "mydatabase"
-bucket_name     = "test-bucket-for-test"
+bucket_name     = "user-bucket-for-test"
