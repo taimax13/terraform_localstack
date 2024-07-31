@@ -32,7 +32,7 @@ resource "aws_db_subnet_group" "db_subnet_group" {
 }
 
 # Example RDS Instance
-#https://docs.aws.amazon.com/AmazonRDS/latest/PostgreSQLReleaseNotes/postgresql-versions.html#postgresql-version17
+#https://docs.aws.amazon.com/AmazonRDS/latest/PostgreSQLReleaseNotes/postgresql-versions.html#postgresql-version16
 resource "aws_db_instance" "db" {
   allocated_storage    = 5
   engine               = "postgres"
