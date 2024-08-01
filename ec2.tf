@@ -28,21 +28,21 @@ resource "aws_security_group" "nginx_sg" {
   }
 }
 
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
+//data "aws_ami" "ubuntu" {
+//  most_recent = true
+//
+//  filter {
+//    name   = "name"
+//    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+//  }
+//
+//  filter {
+//    name   = "virtualization-type"
+//    values = ["hvm"]
+//  }
+//
+//  owners = ["099720109477"] # Canonical
+//}
 
 module "ec2_instances" {
     source = "terraform-aws-modules/ec2-instance/aws"
@@ -51,7 +51,7 @@ module "ec2_instances" {
 
     name = "ec2-nginx-test"
 
-    ami = data.aws_ami.ubuntu.id #var.ami
+    ami = "ami-05bf7f962cb6deee1" #data.aws_ami.ubuntu.id #var.ami
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.nginx_sg.id]
     subnet_id              = module.vpc.public_subnets[0]
