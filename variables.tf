@@ -4,11 +4,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "ami" {
-  description = "The AMI ID for the NGINX server."
-  type        = string
-}
-
 variable "instance_type" {
   description = "The instance type for the NGINX server."
   type        = string
@@ -55,11 +50,4 @@ variable "vpc_id" {
   description = "VPC id"
   type = string
   default = "main-vpc"
-}
-
-
-variable "buckets" {
-  type = any
-  default = {}
-  description = "list of buckets"
 }
