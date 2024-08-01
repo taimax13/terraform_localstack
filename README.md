@@ -132,3 +132,20 @@ Auth.currentAuthenticatedUser()
   })
   .catch(err => console.log(err));
 ```
+#### Summary of Onboarding for a new user
+Objective: Onboard a new user by creating an S3 bucket object (directory), an IAM policy granting access to this directory, and an IAM role to attach this policy.
+
+Steps
+Create a Unique User Directory in the S3 Bucket: Create a directory for the new user in the existing S3 bucket.
+Define IAM Policy for the User: Create an IAM policy that allows the user to manage objects in their directory.
+Create and Attach IAM Role for the User: Create an IAM role for the user and attach the newly created policy to this role.
+
+```bash
+    terraform apply -target=aws_s3_bucket_object.user_folder --var=user_id="new-user-id"
+    terraform apply -target=aws_iam_policy.user_s3_policy --var=user_id="new-user-id"
+    terraform apply -target=aws_iam_role.user_role --var=user_id="new-user-id"
+    terraform apply -target=aws_iam_role_policy_attachment.user_policy_attachment --var=user_id="new-user-id"
+
+```
+Please NOTE! on current code the random - plays role of user_id, so we are not using var.user
+To use it just adjust the code by creating var.user_id and replacing ref in s3.tf from random_id.unique_id.hex to var.user_id
