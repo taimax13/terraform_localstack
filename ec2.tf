@@ -51,7 +51,7 @@ module "ec2_instances" {
 
     name = "ec2-nginx-test"
 
-    ami = "ami-05bf7f962cb6deee1" #data.aws_ami.ubuntu.id #var.ami
+    ami = "ami-0582e4fe9b72a5fe1"
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.nginx_sg.id]
     subnet_id              = module.vpc.public_subnets[0]
