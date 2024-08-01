@@ -46,12 +46,11 @@ resource "aws_security_group" "nginx_sg" {
 
 module "ec2_instances" {
     source = "terraform-aws-modules/ec2-instance/aws"
-    #version = "3.5.0"
     count = 1
 
     name = "ec2-nginx-test"
-
-    ami = "ami-0582e4fe9b72a5fe1"
+    ###after 100000 of try we will go with default
+    #ami = "ami-0427090fd1714168b" #"ami-0582e4fe9b72a5fe1"
     instance_type = var.instance_type
     vpc_security_group_ids = [aws_security_group.nginx_sg.id]
     subnet_id              = module.vpc.public_subnets[0]
